@@ -1,0 +1,15 @@
+.single-item .edit-btn {
+  color: #0ea5e9;
+}
+
+.single-item .edit-btn:hover {
+  background: #e0f2fe;
+}
+
+.single-item .remove-btn {
+  color: #f97373;
+}
+
+.single-item .remove-btn:hover {
+  background: #fee2e2;
+}

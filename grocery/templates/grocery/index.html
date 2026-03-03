@@ -13,9 +13,165 @@
     <link rel="stylesheet" href="{% static 'grocery/css/form.css' %}" />
     <link rel="stylesheet" href="{% static 'grocery/css/single-item.css' %}" />
     <link rel="stylesheet" href="{% static 'grocery/css/items.css' %}" />
+    <style>
+      /* Inline fallback styles so the page is never unstyled */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #f1f5f9;
+        color: #0f172a;
+        line-height: 1.5;
+      }
+
+      .section-center {
+        width: min(600px, 90vw);
+        margin: 4rem auto;
+        background: #ffffff;
+        border-radius: 0.75rem;
+        padding: 2rem 2.5rem;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+      }
+
+      .btn {
+        border: none;
+        cursor: pointer;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+      }
+
+      .submit-btn {
+        background: #2563eb;
+        color: #ffffff;
+        padding: 0.6rem 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+
+      .submit-btn:hover {
+        background: #1d4ed8;
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      }
+
+      .icon-btn {
+        background: transparent;
+        color: #64748b;
+        padding: 0.35rem 0.45rem;
+      }
+
+      .icon-btn:hover {
+        color: #0f172a;
+        background: #e5e7eb;
+      }
+
+      .item-form {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1.25rem;
+      }
+
+      .item-form input[type="text"] {
+        flex: 1;
+        padding: 0.55rem 0.75rem;
+        border-radius: 0.5rem;
+        border: 1px solid #e5e7eb;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .item-form input[type="text"]:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+      }
+
+      .items {
+        margin-top: 1.5rem;
+      }
+
+      .single-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 0.4rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .single-item:last-child {
+        border-bottom: none;
+      }
+
+      .single-item p {
+        flex: 1;
+        font-size: 0.98rem;
+      }
+
+      .single-item input[type="checkbox"] {
+        width: 1.1rem;
+        height: 1.1rem;
+        cursor: pointer;
+      }
+
+      .single-item .edit-btn {
+        color: #0ea5e9;
+      }
+
+      .single-item .edit-btn:hover {
+        background: #e0f2fe;
+      }
+
+      .single-item .remove-btn {
+        color: #f97373;
+      }
+
+      .single-item .remove-btn:hover {
+        background: #fee2e2;
+      }
+
+      .messages {
+        list-style: none;
+        margin-bottom: 1rem;
+      }
+
+      .message {
+        padding: 0.55rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .message.success {
+        background: #ecfdf3;
+        color: #15803d;
+        border: 1px solid #22c55e;
+      }
+
+      .message.error {
+        background: #fef2f2;
+        color: #b91c1c;
+        border: 1px solid #f97373;
+      }
+
+      .title {
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 750;
+        letter-spacing: 0.02em;
+        margin-bottom: 1.25rem;
+      }
+    </style>
   </head>
   <body>
     <section class="section-center">
+      <h1 class="title">Grocery Bud</h1>
       <!-- Messages -->
       {% if messages %}
       <ul class="messages">
