@@ -33,6 +33,11 @@ ALLOWED_HOSTS = [
     "crud-django-0w2j.onrender.com",
 ]
 
+# Allow POST requests from the Render origin (for CSRF).
+CSRF_TRUSTED_ORIGINS = [
+    "https://crud-django-0w2j.onrender.com",
+]
+
 
 # Application definition
 
